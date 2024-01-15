@@ -1,7 +1,19 @@
-import React from 'react'
+import Layout from "./components/Layout"
+import SearchPage from "./components/SearchPage"
+import TrendingPage from "./components/TrendingPage"
 
-export default function App() {
+function App() {
   return (
-    <div>App</div>
-  )
+    <div>
+      <Layout>
+        {/* 검색 영역 */}
+        <SearchPage/>
+        {/* Trending */}
+        <TrendingPage />
+      </Layout>
+      
+    </div>
+  );
 }
+
+export default App;
