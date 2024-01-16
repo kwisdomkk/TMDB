@@ -1,9 +1,11 @@
 import { useEffect,useState} from "react"
 import { motion } from "framer-motion"
 import {Link} from "react-router-dom";
+import ClipLoader from "react-spinners/ClipLoader";
 
 export default function TrendingPage() {
     const [lists,setLists]=useState([])
+    const [isLoading,setIsLoading]=useState(false)
 
     let tabs=[
       {id:"all",label:"All"},
@@ -23,14 +25,16 @@ export default function TrendingPage() {
           Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlMTg0YzhkZTg1MjBhMDgyODFjMWY4ZDVmMmZmZjUyNCIsInN1YiI6IjY1OWNhMGI5YjZjZmYxMDFhNjc0NjJiZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.adwdiZZp19ku5Tgm8IIn3COIs7zLnQOX8R_OYNpd9gg'
         } 
       };
-      console.log(options)
+      // fetch 요청 시작전 isLoading 값을 true
+      setIsLoading(true)
       fetch(url, options)
       .then(res => res.json())
       .then(json =>{
         setLists(json?.results.slice(0, 6))
       })
       .catch(err => console.error('error:' + err));
-      
+      // fetch 요청 끝이나면 isLoading 값을 false
+      setIsLoading(false)
 
     }, [activeTab])
   return (
@@ -60,8 +64,14 @@ export default function TrendingPage() {
               </div>
             </div>
             {/* 리스트 */}
-            <div className="w-full h-[350px] bg-main flex justify-between">
-              {lists.map((item)=>(
+            {isLoading ? <div className="w-full flex justify-center py-16">
+                <ClipLoader
+                    size={10}
+                    aria-label="Loading Spinner"
+                    data-testid="loader"
+                />
+            </div> : <div className="w-full h-[350px] bg-main flex justify-between">
+                {lists.map((item)=>(
                 <Link to={`/detail/${item.id}`}><div key={item.id} className="p-[20px]">
                   <img className="rounded-xl" src={`https://image.tmdb.org/t/p/w150_and_h225_face${item.backdrop_path}`} alt=""/>
                   <div className="w-[150px] h-[60px]">
@@ -69,9 +79,8 @@ export default function TrendingPage() {
                     <p>{item.release_date || item.first_air_date}</p>
                   </div>
                 </div></Link>
-              ))}
-            </div>
-
+                ))}
+            </div>}
         </div>
     </div>
   )

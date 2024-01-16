@@ -30,7 +30,10 @@ export default function Detail(){
     <div className="relative w-full h-[500px] flex justify-center">
       {/* backdrop_path 이미지 */}
       <div className="absolute top-0 left-0 w-full h-full">
-        <img className="w-full h-full object-cover " src={`https://image.tmdb.org/t/p/original${data?.backdrop_path}`} alt="backimage"/>
+      {data?.backdrop_path?
+        (<img className="w-full h-full object-cover " src={`https://image.tmdb.org/t/p/original${data?.backdrop_path}`} alt="backimage"/>):
+        (<img className="w-full h-full object-cover " src={"https://images.unsplash.com/photo-1682686580452-37f1892ee5e8?q=80&w=1975&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"} alt="backimage"/>)
+      }
       </div>
       {/* 필터기능 div */}
       <div className="absolute top-0 left-0 w-full h-full bg-gray-900/90 flex justify-center">
