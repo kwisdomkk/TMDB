@@ -29,23 +29,26 @@ export default function Search() {
   return (
     <Layout>
       <div className='w-full flex justify-center py-16'>
-        <div className='w-[1392px] bg-red-200'>
-          <div className='w-[1022px] bg-blue-200 ml-auto pl-[30px]'>
+        <div className='w-[1392px] flex'>
+          <h3 className='w-[256px] h-[64px] bg-sky-300 rounded-t-lg text-center text-white'>Search Results</h3>
+          <div className='w-[1022px] ml-auto'>
               <div>
                 {data?.results?.map((item)=>(
-                  <div key={item.id} className='w-[1022px] h-[143px] bg-green-200 flex'>
+                  <div key={item.id} className='w-[1022px] h-[143px]  border rounded-lg flex overflow-hidden'>
                     <div className='w-[94px] h-[141px] bg-slate-50'>
                       <img className='w-full h-full object-cover'
                       src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
                       alt='posterImage'/>
                     </div>
                     <div className='w-[926px] h-[141px]'>
-                      <p>{item.title}</p>
-                      <p>{item.release_date}</p>
+                      <div className='my-4'>
+                        <p>{item.title}</p>
+                        <p>{item.release_date}</p>
+                      </div>
+                      <span className='w-[896px] h-[45px] line-clamp-2'>
+                        {item.overview}
+                      </span>
                     </div>
-                    <span className='w-[896px] h-[42px]'>
-                      {item.overview}
-                    </span>
                   </div>
                   ))}
               </div>

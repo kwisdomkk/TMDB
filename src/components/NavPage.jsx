@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Logo from "../assets/logo.svg"
 import { BiPlusMedical } from "react-icons/bi";
 import { FaBell } from "react-icons/fa";
@@ -5,8 +6,20 @@ import { FaSearch } from "react-icons/fa";
 import {Link} from "react-router-dom";
 
 export default function NavPage(){
+  const[scroll,setScroll] =useState(true)
+  document.addEventListener("wheel",(e)=>{
+    if(e.deltaY>0){
+      //마우스 휠 내릴 때
+      // 네비게이션을 감추기 위해 scroll에 false
+      setScroll(false);
+    } else if(e.deltaY<0){
+      //마우스 휠 올릴 때
+      // 네비게이션을 보이기 위해 scroll에 true
+      setScroll(true)
+    }
+  })
   return(
-    <div className="w-full h-[60px] bg-[#032541] flex justify-center">
+    <div className={`sticky top-0 ${scroll? "translate-y-0":"-translate-y-[60px]"} duration-700 z-20 w-full h-[60px] bg-[#032541] flex justify-center`}>
       {/*중앙 정렬된 네비게이션 컨테이너*/}
       <div className="max-w-[1300px] w-full h-full flex justify-between px-8">
         {/* 1.왼쪽:로고+메뉴 */}
