@@ -30,7 +30,20 @@ export default function Search() {
     <Layout>
       <div className='w-full flex justify-center py-16'>
         <div className='w-[1392px] flex'>
-          <h3 className='w-[256px] h-[64px] bg-sky-300 rounded-t-lg text-center text-white'>Search Results</h3>
+          <div className='w-[260px] h-[466px]'>
+            <div className='w-[260px] h-[378px] border rounded-lg overflow-hidden'>
+              <h3 className='w-[258px] h-[64px] bg-[#01b4e4] flex items-center font-semibold text-white p-[20px]'>Search Results</h3>
+              <ul className='w-[258px] h-[312px] text-lg '>
+                <li className='h-[42px] py-[10px] px-[20px]'>TV 프로그램</li>
+                <li className='h-[42px] py-[10px] px-[20px]'>영화</li>
+                <li className='h-[42px] py-[10px] px-[20px]'>인물</li>
+                <li className='h-[42px] py-[10px] px-[20px]'>키워드</li>
+                <li className='h-[42px] py-[10px] px-[20px]'>컬렉션</li>
+                <li className='h-[42px] py-[10px] px-[20px]'>제작 및 배급사</li>
+                <li className='h-[42px] py-[10px] px-[20px]'>방송사</li>
+              </ul>
+            </div>
+          </div>
           <div className='w-[1022px] ml-auto'>
               <div>
                 {data?.results?.map((item)=>(
@@ -40,9 +53,9 @@ export default function Search() {
                       src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
                       alt='posterImage'/>
                     </div>
-                    <div className='w-[926px] h-[141px]'>
+                    <div className='w-[926px] h-[143px]'>
                       <div className='my-4'>
-                        <p>{item.title}</p>
+                        <p className='font-semibold'>{item.title}</p>
                         <p>{item.release_date}</p>
                       </div>
                       <span className='w-[896px] h-[45px] line-clamp-2'>
