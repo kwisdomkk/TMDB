@@ -2,6 +2,7 @@
 import SearchPage from "./components/SearchPage"
 import TrendingPage from "./components/TrendingPage"
 import Layout from "./components/Layout";
+import Cover from "./components/Cover";
 
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
 
         {/* 검색 영역 */}
         <SearchPage/>
+        <Cover/>
         {/* Trending */}
         <TrendingPage />
       </Layout>

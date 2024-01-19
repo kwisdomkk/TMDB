@@ -44,11 +44,11 @@ export default function Search() {
               </ul>
             </div>
           </div>
-          <div className='w-[1022px] ml-auto'>
+          <div className='w-[1022px] ml-[30px]'>
               <div>
                 {data?.results?.map((item)=>(
                   <div key={item.id} className='w-[1022px] h-[143px]  border rounded-lg flex overflow-hidden'>
-                    <div className='w-[94px] h-[141px] bg-slate-50'>
+                    <div className='w-[94px] h-[141px]'>
                       <img className='w-full h-full object-cover'
                       src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
                       alt='posterImage'/>

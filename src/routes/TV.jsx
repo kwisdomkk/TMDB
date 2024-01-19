@@ -1,8 +1,5 @@
 import Layout from "../components/Layout";
-// import CircularProgress from "../components/CircularProgress";
-// import {Link} from "react-router-dom";
 import { useEffect, useState } from "react";
-// import Pagination from "react-js-pagination";
 import "./Paging.css";
 import Item from "../components/item";
 

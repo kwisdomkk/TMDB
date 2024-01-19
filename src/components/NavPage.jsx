@@ -1,9 +1,11 @@
 import { useState } from "react";
 import Logo from "../assets/logo.svg"
 import { BiPlusMedical } from "react-icons/bi";
-import { FaBell } from "react-icons/fa";
 import { FaSearch } from "react-icons/fa";
 import {Link} from "react-router-dom";
+import { useColorMode } from "@chakra-ui/react";
+import { MdLightMode ,MdDarkMode } from "react-icons/md";
+
 
 export default function NavPage(){
   const[scroll,setScroll] =useState(true)
@@ -18,6 +20,7 @@ export default function NavPage(){
       setScroll(true)
     }
   })
+  const { colorMode, toggleColorMode } = useColorMode()
   return(
     <div className={`sticky top-0 ${scroll? "translate-y-0":"-translate-y-[60px]"} duration-700 z-20 w-full h-[60px] bg-[#032541] flex justify-center`}>
       {/*중앙 정렬된 네비게이션 컨테이너*/}
@@ -49,8 +52,8 @@ export default function NavPage(){
             EN
           </div>
           {/* 벨 아이콘 */}
-          <div className="text-white">
-          <FaBell />
+          <div onClick={toggleColorMode} className="text-white cursor-pointer">
+            {colorMode === "light"?  <MdDarkMode />:<MdLightMode />}
           </div>
           {/* 아바타 */}
           <div className="w-8 h-8 bg-pink-500 rounded-full text-white flex justify-center items-center">J</div>

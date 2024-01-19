@@ -5,11 +5,14 @@ import { useEffect, useState } from "react";
 import Pagination from "react-js-pagination";
 import "./Paging.css";
 import Item from "../components/item";
+import { Skeleton } from "@chakra-ui/react";
 
 
 export default function Movies() {
   const [lists,setLists]=useState()
   const [page,setPage]=useState(1)
+  const [isLoading, setIsLoading]=useState(true);
+
   useEffect(()=>{
     const url = `https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=${page}`;
     const options = {
@@ -27,7 +30,7 @@ export default function Movies() {
     setLists(json)  
   })
   .catch(err => console.error('error:' + err));
-
+  setIsLoading(false);
   },[page])
 
   const handlePageChange=(page)=>{
@@ -42,8 +45,12 @@ export default function Movies() {
           <div class="w-[1000px] flex flex-wrap gap-4 gap-y-8">
           {/* item */}
           {lists?.results?.map((list) => (
-            <Item list={list}/>
-            ))}
+          <>
+            {isLoading ? <Skeleton width="180px" height="300px" rounded="xl"/> :(
+              <Item list={list}/>
+              )}
+          </>
+          ))}
           </div>
           {/* 페이지 네이션 */}
             <div className="pt-8">

@@ -5,6 +5,8 @@ import TV from "./routes/TV";
 import NotFound from "./routes/NotFound";
 import Detail from "./routes/Detail";
 import Search from "./routes/Search";
+import Chakra from "./routes/Chakra";
+import Mui from "./routes/Mui";
 
 const router = createBrowserRouter([
   {
@@ -31,6 +33,14 @@ const router = createBrowserRouter([
       {
         path: "/search", 
         element: <Search />
+      },
+      {
+        path: "/chakra", 
+        element: <Chakra />
+      },
+      {
+        path: "/mui", 
+        element: <Mui />
       }
 
     ]
